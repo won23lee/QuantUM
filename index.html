@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quantum Student Organization • Purdue</title>
+  <meta name="description" content="Quantum Student Organization at Purdue — building an inclusive community for exploring quantum sciences." />
+  <style>
+    :root{
+      --gold:#CEB888;/* Purdue gold */
+      --black:#000000;
+      --gray-900:#0f0f0f;
+      --gray-800:#1a1a1a;
+      --gray-700:#2a2a2a;
+      --gray-400:#9ca3af;
+      --white:#ffffff;
+      --maxw:1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:#0e0e0e;color:var(--white);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Noto Sans",sans-serif}
+    a{color:var(--gold);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:var(--maxw);margin:auto;padding:0 20px}
+    /* Header */
+    header{position:sticky;top:0;z-index:50;background:rgba(14,14,14,.8);backdrop-filter:saturate(120%) blur(8px);border-bottom:1px solid #1f1f1f}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .logo{display:flex;align-items:center;gap:.6rem;font-weight:700}
+    .logo-mark{display:inline-grid;place-items:center;width:32px;height:32px;border:2px solid var(--gold);border-radius:6px;color:var(--gold);font-size:14px}
+    nav ul{display:flex;gap:1rem;list-style:none;margin:0;padding:0}
+    .nav a{color:var(--white);opacity:.9}
+    .nav a:hover{opacity:1}
+    .mobile-btn{display:none;border:1px solid #333;background:#141414;color:#fff;padding:.5rem .7rem;border-radius:.5rem}
+
+    /* Hero */
+    .hero{position:relative;padding:88px 0 56px;border-bottom:1px solid #1f1f1f;background:radial-gradient(1200px 600px at 70% -10%, rgba(206,184,136,.25), transparent 60%), radial-gradient(800px 400px at 10% 0%, rgba(206,184,136,.15), transparent 60%)}
+    .eyebrow{letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:600;font-size:.85rem}
+    h1{font-size:clamp(32px,6vw,52px);line-height:1.05;margin:.4rem 0}
+    .lead{color:#d1d5db;max-width:48ch;font-size:1.1rem}
+    .cta{margin-top:1.2rem;display:flex;gap:.75rem;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--gold);color:#0b0b0b;background:var(--gold);padding:.7rem 1rem;border-radius:.6rem;font-weight:700}
+    .btn.secondary{background:transparent;color:var(--gold)}
+
+    /* Sections */
+    section{padding:56px 0;border-bottom:1px solid #1f1f1f}
+    h2{font-size:clamp(24px,3.5vw,34px);margin:0 0 1rem}
+    .muted{color:#c7c7c7}
+
+    /* Cards grid */
+    .grid{display:grid;gap:1rem}
+    @media (min-width:700px){.grid.cols-3{grid-template-columns:repeat(3,1fr)}.grid.cols-2{grid-template-columns:repeat(2,1fr)}}
+    .card{background:linear-gradient(180deg,#141414,#101010);border:1px solid #202020;border-radius:14px;padding:16px}
+    .card h3{margin:.2rem 0 .4rem;font-size:1.05rem}
+    .pill{display:inline-block;padding:.2rem .5rem;border:1px solid #2d2d2d;border-radius:999px;color:#cfcfcf;font-size:.8rem}
+
+    /* Officers */
+    .avatars{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1rem}
+    .avatar{background:#121212;border:1px solid #202020;border-radius:14px;padding:16px;display:flex;gap:.9rem}
+    .avatar img{width:56px;height:56px;border-radius:10px;border:1px solid #2a2a2a;object-fit:cover;background:#0d0d0d}
+    .avatar small{color:#b5b5b5}
+
+    /* Footer */
+    footer{padding:28px 0;background:#0c0c0c}
+    .foot{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between}
+    .sm{display:flex;gap:.75rem}
+    .sm a{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid #2a2a2a;border-radius:8px}
+
+    /* Mobile nav */
+    #menu{display:none}
+    @media (max-width:850px){
+      nav ul{display:none}
+      .mobile-btn{display:inline-flex}
+      #menu[aria-expanded="true"]{display:block;padding:12px 0;border-top:1px solid #1f1f1f}
+      #menu ul{list-style:none;margin:0;padding:0;display:grid;gap:.6rem}
+      #menu a{display:block;padding:.5rem 0;color:#fff}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo"><span class="logo-mark">Q</span> Quantum Student Organization</div>
+      <nav aria-label="primary">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#officers">Officers</a></li>
+          <li><a href="#join">Join</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="mobile-btn" id="menuBtn" aria-controls="menu" aria-expanded="false" aria-label="Open menu">☰</button>
+    </div>
+    <div id="menu" class="container" aria-expanded="false">
+      <ul>
+        <li><a href="#about" onclick="closeMenu()">About</a></li>
+        <li><a href="#events" onclick="closeMenu()">Events</a></li>
+        <li><a href="#officers" onclick="closeMenu()">Officers</a></li>
+        <li><a href="#join" onclick="closeMenu()">Join</a></li>
+        <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="eyebrow">Purdue University</div>
+        <h1>Explore Quantum Together</h1>
+        <p class="lead">QSO builds an inclusive, interdisciplinary community for students curious about quantum science and engineering—through talks, workshops, research nights, and socials.</p>
+        <div class="cta">
+          <a class="btn" href="#join">Join QSO</a>
+          <a class="btn secondary" href="#events">See upcoming events →</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <h2>About</h2>
+        <p class="muted">We welcome beginners and advanced learners alike. Expect intro talks by faculty, student-led discussions, career panels, lab tours, and movie nights. Our goal is to make <em>quantum</em> approachable, tangible, and fun.</p>
+        <div class="grid cols-3" style="margin-top:16px">
+          <div class="card">
+            <span class="pill">Programs</span>
+            <h3>Talks & Workshops</h3>
+            <p>Intro-to-quantum sessions, guest lectures, and hands-on tutorials with open materials.</p>
+          </div>
+          <div class="card">
+            <span class="pill">Community</span>
+            <h3>Research & Study Nights</h3>
+            <p>Peer-led problem solving, paper reading groups, and mentorship connections.</p>
+          </div>
+          <div class="card">
+            <span class="pill">Careers</span>
+            <h3>Industry & Grad Pathways</h3>
+            <p>Panels with alumni and partners exploring quantum careers and graduate school.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="events">
+      <div class="container">
+        <h2>Events</h2>
+        <p class="muted">Here are a few sample cards—replace with your real events or connect to a Google Calendar.</p>
+        <div class="grid cols-3" style="margin-top:16px">
+          <article class="card">
+            <h3>Kickoff Social</h3>
+            <p class="muted">Sept 5, 6–7:30 PM • WALC Atrium</p>
+            <p>Meet the team, learn about QSO, and grab snacks.</p>
+          </article>
+          <article class="card">
+            <h3>Intro to QIS</h3>
+            <p class="muted">Sept 12, 6–8 PM • EE 129</p>
+            <p>Beginner-friendly session on qubits, superposition, and circuits.</p>
+          </article>
+          <article class="card">
+            <h3>Spring into Quantum</h3>
+            <p class="muted">Apr 4 • Poster Session</p>
+            <p>Showcase undergraduate & graduate research across quantum fields.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="officers">
+      <div class="container">
+        <h2>Officers</h2>
+        <div class="avatars" style="margin-top:12px">
+          <div class="avatar">
+            <img alt="Officer headshot" src="https://picsum.photos/seed/q1/100/100" />
+            <div>
+              <strong>First Last</strong><br>
+              <small>President • Major, Year</small>
+            </div>
+          </div>
+          <div class="avatar">
+            <img alt="Officer headshot" src="https://picsum.photos/seed/q2/100/100" />
+            <div>
+              <strong>First Last</strong><br>
+              <small>Vice President • Major, Year</small>
+            </div>
+          </div>
+          <div class="avatar">
+            <img alt="Officer headshot" src="https://picsum.photos/seed/q3/100/100" />
+            <div>
+              <strong>First Last</strong><br>
+              <small>Treasurer • Major, Year</small>
+            </div>
+          </div>
+          <div class="avatar">
+            <img alt="Officer headshot" src="https://picsum.photos/seed/q4/100/100" />
+            <div>
+              <strong>First Last</strong><br>
+              <small>Events • Major, Year</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="join">
+      <div class="container">
+        <h2>Join QSO</h2>
+        <p class="muted">Join on BoilerLink, follow our Instagram, and hop into the mailing list.
+        </p>
+        <div class="cta">
+          <a class="btn" href="https://boilerlink.purdue.edu/organization/qso-homepage" target="_blank" rel="noopener">Join on BoilerLink</a>
+          <a class="btn secondary" href="https://www.instagram.com/qso_purdue/" target="_blank" rel="noopener">Follow Instagram</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <h2>Contact</h2>
+        <p class="muted">Have questions or want to collaborate? Email us and we’ll get back to you.</p>
+        <p>Email: <a href="mailto:qso@purdue.edu">qso@purdue.edu</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container foot">
+      <div class="logo"><span class="logo-mark">Q</span> QSO at Purdue</div>
+      <div class="sm">
+        <a aria-label="Instagram" href="https://www.instagram.com/qso_purdue/" target="_blank" rel="noopener">IG</a>
+        <a aria-label="BoilerLink" href="https://boilerlink.purdue.edu/organization/qso-homepage" target="_blank" rel="noopener">BL</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const menu = document.getElementById('menu');
+    function closeMenu(){menu.setAttribute('aria-expanded','false');menuBtn.setAttribute('aria-expanded','false');}
+    menuBtn.addEventListener('click',()=>{
+      const expanded = menu.getAttribute('aria-expanded')==='true';
+      menu.setAttribute('aria-expanded', String(!expanded));
+      menuBtn.setAttribute('aria-expanded', String(!expanded));
+    });
+  </script>
+</body>
+</html>
